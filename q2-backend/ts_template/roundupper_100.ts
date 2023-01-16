@@ -1,5 +1,13 @@
 /**
- * First thoughts
+ * First thoughts:
+ *  - Like COMP1531, this task involves creating routes for an Express server. Thanks Peter!
+ *  - The POST route was befuddled me until I realised I had forgotten to use the express.json()
+ *  middleware. Oops!
+ *  - I would love to place this in another file, but am keeping it here for easier reading for the
+ *  interviewers.
+ *  - Added some failure tests into the Jest file, for invalid names, etc.
+ * Closing thoughts:
+ *  - Thanks for the challenge! It's a good exercise on Express and TS.
  */
 
 import express from 'express';
@@ -86,7 +94,7 @@ const getLassoable = (cowboyName: string): { 'space_animals': LassoableAnimal[] 
   if (cowboyEntity !== undefined) {
     const lassoLength = (cowboyEntity.metadata as SpaceCowboy).lassoLength;
 
-    // Grabs all animals, then finds all lassoable animals
+    // Grabs all animals, then filters all lassoable animals, then maps to the right object type
     const lassoableAnimals = spaceDatabase
       .filter(entity => entity.type === 'space_animal')
       .filter(animal => {
@@ -97,7 +105,8 @@ const getLassoable = (cowboyName: string): { 'space_animals': LassoableAnimal[] 
           animal.location.y
         );
 
-        return cowboyAnimalDistance <= lassoLength
+        // Comparison filters lassoable animals
+        return cowboyAnimalDistance <= lassoLength;
       })
       .map(animal => ({
         type: (animal.metadata as SpaceAnimal).type,
