@@ -18,3 +18,22 @@
     flex: 1 1 0px;
     flex-direction: column;
 }
+
+/*
+Changes:
+- as the date element must be a smaller, blue font aligned on the
+right, a CSS class is defined as dateItem.
+*/
+
+.updateRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.dateItem {
+    display: flex;
+    align-items: flex-end;
+    color: blue;
+    font-size: xx-small;
+}
