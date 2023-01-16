@@ -39,8 +39,8 @@
     A: Completed. This was a really tough challenge, as there is still much more to learn in Rust - but breaking down the problem assisted greatly in thinking about the next step. The code could definitely be made cleaner - I could have separated much of the code into their own functions, but I was unsure of their signatures. Overall, fantastic challenge. Thanks!
 
     References:
-        1. [PathBuf](https://doc.rust-lang.org/std/path/struct.PathBuf.html)
-        2. [csv Crate](https://docs.rs/csv/latest/csv/tutorial/index.html)
-        3. [csv ReaderBuilder](https://docs.rs/csv/latest/csv/struct.ReaderBuilder.html)
-        4. [HashMap example](https://doc.rust-lang.org/std/collections/struct.HashMap.html)
-        5. [HashMap snippets](https://doc.rust-lang.org/book/ch08-03-hash-maps.html)
+    1. [PathBuf](https://doc.rust-lang.org/std/path/struct.PathBuf.html)
+    2. [csv Crate](https://docs.rs/csv/latest/csv/tutorial/index.html)
+    3. [csv ReaderBuilder](https://docs.rs/csv/latest/csv/struct.ReaderBuilder.html)
+    4. [HashMap example](https://doc.rust-lang.org/std/collections/struct.HashMap.html)
+    5. [HashMap snippets](https://doc.rust-lang.org/book/ch08-03-hash-maps.html)
