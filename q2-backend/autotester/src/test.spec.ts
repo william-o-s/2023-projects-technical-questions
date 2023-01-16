@@ -66,6 +66,43 @@ describe("Part 1", () => {
       const response = await createEntities(entities);
       expect(response.status).toBe(200);
     });
+    
+    // Invalid Space Entities
+    const cases: SpaceEntity[] = [
+      {
+        type: "space_human",
+        metadata: { name: "Buckaroo Banzai", lassoLength: 10 },
+        location: { x: 100, y: 2 },
+      },
+      {
+        type: "space_cowboy",
+        metadata: { name: "", lassoLength: 19 },
+        location: { x: 1, y: 2 },
+      },
+      {
+        type: "space_cowboy",
+        metadata: { name: "Buckaroo Banzai", lassoLength: -10 },
+        location: { x: 100, y: 2 },
+      },
+      {
+        type: "space_animal",
+        metadata: { type: "dog :(" },
+        location: { x: 1, y: 2 },
+      },
+      {
+        type: "space_animal",
+        metadata: { type: "Rudolph the Red-Nosed Reindeer" },
+        location: { x: 1, y: 2 },
+      },
+    ];
+  
+    test.each(cases)(
+      "Fails when creating invalid Space Entity",
+      async (spaceEntity) => {
+        const response = await createEntities([spaceEntity]);
+        expect(response.status).not.toBe(200);
+      }
+    );
   });
 });
 
@@ -142,6 +179,28 @@ describe("Part 2", () => {
       ];
 
       const response = await getLassoable("Eliot Ness");
+
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual({
+        space_animals: expected,
+      });
+    });
+
+    it("should return nothing when cowboy is non-existent", async () => {
+      const expected = [];
+
+      const response = await getLassoable("My Future");
+
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual({
+        space_animals: expected,
+      });
+    });
+
+    it("should return nothing when given nothing", async () => {
+      const expected = [];
+
+      const response = await getLassoable("");
 
       expect(response.status).toBe(200);
       expect(response.body).toEqual({
